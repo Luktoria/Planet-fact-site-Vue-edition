@@ -1,4 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
+import PlanetDetails from '../components/PlanetDetails.vue';
 
 
 const router = createRouter({
@@ -6,14 +7,12 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: ""
+      redirect: '/planets/mercury'
     },
     {
-      path: '/about',
-      name: 'about',
-
-      
+      path: '/planets/:name',
+      name: 'name',
+      component: PlanetDetails
     }
   ]
 })
