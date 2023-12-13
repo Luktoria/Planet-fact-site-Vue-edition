@@ -7,7 +7,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/planets/mercury'
+      redirect: '/planets/Mercury'
     },
     {
       path: '/planets/:name',
