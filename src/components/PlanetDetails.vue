@@ -20,22 +20,27 @@
         </div>
 
         <div class="info-container">
+            <div class="title-and-facts">
             <h1>{{ Data[currentIndex].name }}</h1>
 
-            <div class="overview"  v-if="showOverview" >
+            <div class="overview option"  v-if="showOverview" >
             <p> {{ Data[currentIndex].overview.content }}</p>
-            <p>{{ Data[currentIndex].overview.source }}</p>
+            <span>Source: </span>
+            <a :href="Data[currentIndex].overview.source">Wikipedia <img src="../assets/icon-source.svg" alt="link-anchor-icon"></a>
             </div>
 
-            <div class="structure" v-if="showInternal">
+            <div class="structure option" v-if="showInternal">
                 <p> {{ Data[currentIndex].structure.content }} </p>
-                <p> {{ Data[currentIndex].structure.source  }}</p>
+                <span>Source: </span>
+            <a :href="Data[currentIndex].structure.source">Wikipedia <img src="../assets/icon-source.svg" alt="link-anchor-icon"></a>
             </div>
 
-            <div class="geology" v-if="showGeology">
+            <div class="geology option" v-if="showGeology">
                 <p> {{ Data[currentIndex].geology.content }} </p>
-                <p> {{ Data[currentIndex].geology.source }} </p>
+                <span>Source: </span>
+            <a :href="Data[currentIndex].geology.source">Wikipedia <img src="../assets/icon-source.svg" alt="link-anchor-icon"></a>
             </div>
+        </div>
 
             <div>
             <button :class="[showOverview ? this.$route.params.name + '-active' : '']" @click="activateOverview"> <span>01 </span> OVERVIEW</button>
@@ -147,7 +152,7 @@ export default {
 }
 
 .info-container{
-    width: 25%;
+    width: 20%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -167,6 +172,7 @@ export default {
     line-height: 25px;
     color: #bfbfc7;
     height: 110px;
+    margin-bottom: 25px;
 }
 
 .image-container-for-geology,
@@ -223,6 +229,21 @@ button span{
     color: #838391;
     padding: 0 15px;
 }
+
+.option{
+    margin: 25px 0;
+}
+
+.option span,
+.option a {
+    color: #838391;
+    font-family: 'League Spartan', sans-serif;
+}
+
+.option a{
+    font-weight: 600;
+}
+
 
 .planet-facts-cards{
     display: flex;
@@ -284,6 +305,59 @@ button span{
 
 .Neptune-active{
     background-color: #2D68F0;
+}
+
+
+@media screen and (max-width: 1225px) {
+
+.planet-img{
+    max-height: 400px;
+}
+
+.info-container {
+    width: 30%;
+}
+
+}
+
+@media screen and (max-width: 900px) {
+
+.planet-container{
+    flex-direction: column;
+    justify-content: normal;
+}
+
+.info-container {
+    flex-direction: row;
+    width: 90%;
+    align-items: center;
+}
+
+.title-and-facts{
+    width: 50%;
+    padding-right: 20px;
+}
+
+.info-container h1{
+    font-size: 40px;
+}
+}
+
+.image-container-for-geology, .image-container-for-overview, .image-container-for-internal {
+    height: 430px;
+}
+
+.below-img{
+    margin-top: 0;
+}
+
+.top-img img{
+    height: 100px;
+    width: auto;
+}
+
+.card-item h2{
+    font-size: 24px;;
 }
 
 </style>
