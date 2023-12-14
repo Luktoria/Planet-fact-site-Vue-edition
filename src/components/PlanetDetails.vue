@@ -11,10 +11,10 @@
         </div>
 
         <div class="image-container-for-geology" v-if="showGeology">
-            <div>
+            <div class="below-img">
             <img :src="'/src/' + Data[this.currentIndex].images.planet" alt="image of planet"  class="planet-img">
             </div>
-            <div class="top-img">
+         <div class="top-img">
             <img :src="'/src/' +  Data[this.currentIndex].images.geology"  class="planet-geology">
             </div>
         </div>
@@ -142,12 +142,31 @@ export default {
 .planet-container{
     display: flex;
     justify-content: center;
+    align-items: center;
     height: 700px;
 }
 
 .info-container{
-    width: 40%;
-    /* padding-top: 10%; */
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info-container h1{
+    font-family: 'Antonio', sans-serif;
+    font-size: 80px;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin: 0;
+}
+
+.info-container p{
+    font-family: 'League Spartan', sans-serif;
+    font-size: 14px;
+    line-height: 25px;
+    color: #bfbfc7;
+    height: 110px;
 }
 
 .image-container-for-geology,
@@ -155,14 +174,22 @@ export default {
 .image-container-for-internal
 {
     
-    width: 50%;
+    width: 60%;
     text-align: center;
+    
     /* padding-top: 5%; */
 }
 
+.planet-img{
+    max-height: 600px;
+}
+.below-img{
+    margin-top: 187px;
+}
 .top-img{
     position: relative;
-    bottom: 25%;
+    z-index: 2;
+    bottom: 150px;
 }
 
 .planet-geology{
@@ -176,13 +203,16 @@ button{
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
-    width: 50%;
+    width: 100%;
     line-height: 25px;
     letter-spacing: 2.6px;
     border: 1px solid #38384F;
     margin: 10px 0;
     padding: 2% 2% 2% 5%;
     text-align: left;
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 button:hover{
@@ -198,7 +228,6 @@ button span{
     display: flex;
     width: 80%;
     margin: 0 auto;
-   
 }
 
 .card-item{
@@ -206,6 +235,22 @@ button span{
     width: 25%;
     margin: 10px;
     padding: 1% 1% 1% 2%;
+}
+
+.card-item h4{
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #838391;
+}
+
+.card-item h2{
+    font-family: 'Antonio', sans-serif;
+    font-size: 40px;
+    letter-spacing: -1.5px;
+    text-transform: uppercase;
+    margin: 0 0 5px 0;
 }
 
 

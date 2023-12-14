@@ -20,6 +20,8 @@ export default {
 
 </script>
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Antonio:wght@400;500&family=League+Spartan:wght@400;600&display=swap");
+
 body{
     margin: 0;
     box-sizing: border-box;
