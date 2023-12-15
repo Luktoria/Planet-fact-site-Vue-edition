@@ -195,4 +195,23 @@ nav{
 
 }
 
+@media screen and (max-width: 450px){
+
+    nav{
+        width: 90%;
+    }
+
+    h2{
+        font-size: 28px;
+    }
+
+
+    .list-mobile ul{
+        font-size: 15px;
+        width: 90%;
+        margin: 5px auto;
+        line-height: 15px;
+    }
+}
+
 </style>
