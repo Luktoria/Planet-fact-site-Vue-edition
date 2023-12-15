@@ -20,7 +20,7 @@
     <div class="list-mobile" v-if="mobileVisible">
         <ul v-for="planet of Data" :key="planet.name" :id="planet.name" class="mobile-planets">
                 <router-link :to="{ name: 'name', params: { name: planet.name } }">
-                    <li class='planet'>{{ planet.name }}</li>
+                    <li class='planet'>{{ planet.name }} <span> > </span></li>
                     <hr>
                 </router-link>
             </ul>
@@ -203,6 +203,11 @@ nav{
 
     h2{
         font-size: 28px;
+    }
+
+    span{
+        float: right;
+        color: #9797974f;
     }
 
 
