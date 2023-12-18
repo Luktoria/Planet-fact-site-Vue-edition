@@ -12,12 +12,11 @@
 
 
 
+
   <div class="planet-container">
 
-    <PlanetPicture :overview="showOverview" :image-src-overview="Data[this.currentIndex].images.planet"
-      :internal="showInternal" :image-src-internal="Data[this.currentIndex].images.internal"
-      :geology="showGeology" :image-src-geology-upper="Data[this.currentIndex].images.planet"
-      :image-src-geology-below="Data[this.currentIndex].images.geology" />
+    <PlanetPictures :planet="activePlanet" :overview="showOverview" :internal="showInternal" :geology="showGeology" />
+
 
     <div class="info-container">
 
@@ -38,36 +37,28 @@
           </span>SURFACE GEOLOGY</button>
       </div>
 
-
     </div>
   </div>
 
   <PlanetFactCards :rotation="Data[currentIndex].rotation" :revolution="Data[currentIndex].revolution"
     :radius="Data[currentIndex].radius" :temperature="Data[currentIndex].temperature" />
-
-   <div class="invisible">
-  //  You only need this component so that npm run build uploads pictures with the code as well
-  <ImgGallery />
-  </div>
-
 </template>
-
 
 <script>
 
 import Data from "../../data.json";
-import PlanetPicture from "./PlanetPicture.vue";
 import PlanetInfo from "./PlanetInfo.vue";
 import PlanetFactCards from "./PlanetFactCards.vue";
-import ImgGallery from "./ImgGallery.vue"
+import PlanetPictures from "./PlanetPictures.vue";
+
+
 
 export default {
 
   components: {
     PlanetFactCards,
-    PlanetPicture,
     PlanetInfo,
-    ImgGallery
+    PlanetPictures,
   },
 
 
@@ -77,11 +68,16 @@ export default {
       showOverview: true,
       showInternal: false,
       showGeology: false,
+      activePlanet: "",
       Data
     }
   },
 
   methods: {
+    showPlanet() {
+      console.log(this.activePlanet);
+    },
+
     getThisPlanet(route) {
       const array = Data;
       const name = route.params.name;
@@ -90,6 +86,12 @@ export default {
         newArr.push(array[i].name);
       }
       this.currentIndex = newArr.indexOf(name);
+    },
+
+    getCurrentPlanet(route) {
+      const currentName = route.params.name;
+      console.log(currentName);
+      this.activePlanet = currentName;
     },
 
     activateOverview() {
@@ -108,18 +110,22 @@ export default {
       this.showOverview = false;
       this.showInternal = false;
       this.showGeology = true;
-    }
+    },
 
   },
+
+
 
   watch: {
     $route(newRoute) {
       this.getThisPlanet(newRoute);
-    }
+       this.getCurrentPlanet(newRoute);
+    },
   },
 
   created() {
     this.getThisPlanet(this.$route);
+    this.getCurrentPlanet(this.$route);
 
   }
 
@@ -131,16 +137,12 @@ export default {
 <style scoped>
 .planet-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   height: 700px;
 }
 
 .mobile-button-container {
-  display: none;
-}
-
-.invisible{
   display: none;
 }
 
