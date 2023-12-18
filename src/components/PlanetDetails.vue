@@ -10,14 +10,14 @@
 
   <hr class="mobile-hr">
 
+
+
   <div class="planet-container">
 
-    <PlanetPicture :overview="showOverview" :image-src-overview="'/src/' + Data[this.currentIndex].images.planet"
-      :internal="showInternal" :image-src-internal="'/src/' + Data[this.currentIndex].images.internal"
-      :geology="showGeology" :image-src-geology-upper="'/src/' + Data[this.currentIndex].images.planet"
-      :image-src-geology-below="'/src/' + Data[this.currentIndex].images.geology" />
-
-
+    <PlanetPicture :overview="showOverview" :image-src-overview="Data[this.currentIndex].images.planet"
+      :internal="showInternal" :image-src-internal="Data[this.currentIndex].images.internal"
+      :geology="showGeology" :image-src-geology-upper="Data[this.currentIndex].images.planet"
+      :image-src-geology-below="Data[this.currentIndex].images.geology" />
 
     <div class="info-container">
 
@@ -44,7 +44,14 @@
 
   <PlanetFactCards :rotation="Data[currentIndex].rotation" :revolution="Data[currentIndex].revolution"
     :radius="Data[currentIndex].radius" :temperature="Data[currentIndex].temperature" />
+
+   <div class="invisible">
+  //  You only need this component so that npm run build uploads pictures with the code as well
+  <ImgGallery />
+  </div>
+
 </template>
+
 
 <script>
 
@@ -52,13 +59,15 @@ import Data from "../../data.json";
 import PlanetPicture from "./PlanetPicture.vue";
 import PlanetInfo from "./PlanetInfo.vue";
 import PlanetFactCards from "./PlanetFactCards.vue";
+import ImgGallery from "./ImgGallery.vue"
 
 export default {
 
   components: {
     PlanetFactCards,
     PlanetPicture,
-    PlanetInfo
+    PlanetInfo,
+    ImgGallery
   },
 
 
@@ -128,6 +137,10 @@ export default {
 }
 
 .mobile-button-container {
+  display: none;
+}
+
+.invisible{
   display: none;
 }
 
