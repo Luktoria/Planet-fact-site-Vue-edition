@@ -11,22 +11,28 @@
       </ul>
     </div>
 
+<!------------ Mobile menu ------------>
+
     <div class="list-container-mobile">
       <img src="../assets/icon-hamburger.svg" alt="mobile-menu-icon" @click="showMobileMenu">
     </div>
 
   </nav>
 
-
-
-  <div class="list-mobile" v-if="mobileVisible">
-        <ul v-for="planet of Data" :key="planet.name" :id="planet.name" class="mobile-planets">
-          <router-link :to="{ name: 'name', params: { name: planet.name } }">
-            <li class='planet'>{{ planet.name }} <span> > </span></li>
+<transition name="slide">
+  <div class="list-mobile list"  v-if="mobileVisible" >
+        <ul  class="mobile-planets">
+          <router-link v-for="planet of Data" 
+          :key="planet.name"  :id="planet.name" 
+          :to="{ name: 'name', params: { name: planet.name } }">
+            <li class='planet'>{{ planet.name }} 
+            <span> > </span>
+            </li>
             <hr>
           </router-link>
         </ul>
   </div>
+  </transition> 
 
 
 </template>
@@ -149,6 +155,43 @@ a:hover {
     margin: 0 auto;
   }
 
+
+  .slide-enter-from{
+    opacity: 0;
+      transform: scaleY(0);
+  }
+
+  .slide-enter-active{
+    transition: all 0.8s ease-in-out;
+  }
+
+  .slide-enter-to{
+    opacity: 1;
+
+  }
+  
+  .slide-leave-from{
+    opacity: 1;
+  }
+  
+    .slide-leave-active{
+        transition: all 0.5s ease-in-out;
+  }
+
+  .slide-leave-to{
+     transform: scaleY(0);
+     opacity: 0;
+  }
+
+
+  .list{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  transform-origin: top;
+  overflow: hidden;
+  }
   .planet-heading {
     display: inline-block;
   }
