@@ -162,7 +162,7 @@ a:hover {
   }
 
   .slide-enter-active{
-    transition: all 0.8s ease-in-out;
+    transition: all 0.5s ease-in-out;
   }
 
   .slide-enter-to{

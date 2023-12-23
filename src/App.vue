@@ -1,7 +1,11 @@
 <template>
 <TheNavbar/>
 <hr>
-<router-view></router-view>
+<router-view v-slot="{ Component, route }">
+<transition name="fade-button" mode="out-in">
+  <component :is="Component" :key="route.path"></component>
+  </transition>
+</router-view>
 
 
 
@@ -32,6 +36,25 @@ body{
 
 hr{
     border-color: #9797974f;
+}
+
+
+.fade-button-enter-from,
+.fade-button-leave-to {
+  opacity: 0;
+}
+
+.fade-button-enter-active {
+  transition: opacity 0.15s ease-out;
+}
+
+.fade-button-leave-active {
+  transition: opacity 0.15s ease-in;
+}
+
+.fade-button-enter-to,
+.fade-button-leave-from {
+  opacity: 1;
 }
 
 </style>

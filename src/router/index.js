@@ -7,14 +7,14 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/planets/Mercury'
+      redirect: '/Mercury'
     },
     {
-      path: '/planets/:name',
+      path: '/:name',
       name: 'name',
       component: PlanetDetails
     }
   ]
 })
 
-export default router
+export default router;

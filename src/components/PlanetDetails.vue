@@ -1,47 +1,45 @@
 <template>
-  <div class="mobile-button-container">
-    <button :class="[showOverview ? this.$route.params.name + '-mobile-active' : '']" @click="activateOverview">
-      OVERVIEW</button>
-    <button :class="[showInternal ? this.$route.params.name + '-mobile-active' : '']" @click="activateInternal">
-      STRUCTURE</button>
-    <button :class="[showGeology ? this.$route.params.name + '-mobile-active' : '']"
-      @click="activateGeology">SURFACE</button>
-  </div>
-
-  <hr class="mobile-hr">
-
-
-
-
-  <div class="planet-container">
-
-    <PlanetPictures :planet="activePlanet" :overview="showOverview" :internal="showInternal" :geology="showGeology" />
-
-
-    <div class="info-container">
-
-      <div class="title-and-facts">
-        <PlanetInfo :name="Data[currentIndex].name" :overview="showOverview"
-          :overview-content="Data[currentIndex].overview.content" :overview-source="Data[currentIndex].overview.source"
-          :internal="showInternal" :internal-content="Data[currentIndex].structure.content"
-          :internal-source="Data[currentIndex].structure.source" :geology="showGeology"
-          :geology-content="Data[currentIndex].geology.content" :geology-source="Data[currentIndex].structure.source" />
-      </div>
-
-      <div class="web-button-container">
-        <button :class="[showOverview ? this.$route.params.name + '-active' : '']" @click="activateOverview">
-          <span>01 </span> OVERVIEW</button>
-        <button :class="[showInternal ? this.$route.params.name + '-active' : '']" @click="activateInternal">
-          <span>02 </span> INTERNAL STRUCTURE</button>
-        <button :class="[showGeology ? this.$route.params.name + '-active' : '']" @click="activateGeology"> <span>03
-          </span>SURFACE GEOLOGY</button>
-      </div>
-
+  <div class="container">
+        <div class="mobile-button-container">
+      <button :class="[showOverview ? this.$route.params.name + '-mobile-active' : '']" @click="activateOverview">
+        OVERVIEW</button>
+      <button :class="[showInternal ? this.$route.params.name + '-mobile-active' : '']" @click="activateInternal">
+        STRUCTURE</button>
+      <button :class="[showGeology ? this.$route.params.name + '-mobile-active' : '']"
+        @click="activateGeology">SURFACE</button>
     </div>
-  </div>
 
-  <PlanetFactCards :rotation="Data[currentIndex].rotation" :revolution="Data[currentIndex].revolution"
-    :radius="Data[currentIndex].radius" :temperature="Data[currentIndex].temperature" />
+    <hr class="mobile-hr">
+
+    <div class="planet-container">
+
+      <PlanetPictures :planet="activePlanet" :overview="showOverview" :internal="showInternal" :geology="showGeology" />
+
+      <div class="info-container">
+
+        <div class="title-and-facts">
+          <PlanetInfo :name="Data[currentIndex].name" :overview="showOverview"
+            :overview-content="Data[currentIndex].overview.content" :overview-source="Data[currentIndex].overview.source"
+            :internal="showInternal" :internal-content="Data[currentIndex].structure.content"
+            :internal-source="Data[currentIndex].structure.source" :geology="showGeology"
+            :geology-content="Data[currentIndex].geology.content" :geology-source="Data[currentIndex].structure.source" />
+        </div>
+
+        <div class="web-button-container">
+          <button :class="[showOverview ? this.$route.params.name + '-active' : '']" @click="activateOverview">
+            <span>01 </span> OVERVIEW</button>
+          <button :class="[showInternal ? this.$route.params.name + '-active' : '']" @click="activateInternal">
+            <span>02 </span> INTERNAL STRUCTURE</button>
+          <button :class="[showGeology ? this.$route.params.name + '-active' : '']" @click="activateGeology"> <span>03
+            </span>SURFACE GEOLOGY</button>
+        </div>
+
+      </div>
+    </div>
+
+    <PlanetFactCards :rotation="Data[currentIndex].rotation" :revolution="Data[currentIndex].revolution"
+      :radius="Data[currentIndex].radius" :temperature="Data[currentIndex].temperature" /> 
+  </div>
 </template>
 
 <script>
@@ -74,6 +72,8 @@ export default {
   },
 
   methods: {
+
+
     showPlanet() {
       console.log(this.activePlanet);
     },
@@ -114,12 +114,10 @@ export default {
 
   },
 
-
-
   watch: {
     $route(newRoute) {
       this.getThisPlanet(newRoute);
-       this.getCurrentPlanet(newRoute);
+      this.getCurrentPlanet(newRoute);
     },
   },
 
@@ -128,8 +126,6 @@ export default {
     this.getCurrentPlanet(this.$route);
 
   }
-
-
 }
 
 </script>
@@ -221,6 +217,7 @@ button span {
 .Neptune-active {
   background-color: #2D68F0;
 }
+
 
 /* Css media queries start */
 
