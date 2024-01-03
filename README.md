@@ -32,7 +32,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Solution URL](https://www.frontendmentor.io/solutions/planet-fact-site-l3Od_5yqnO)
-- Live Site URL: [Live site URL](https://planet-fact-site-vue-edition.vercel.app/Mercury)
+- Live Site URL: [Live site URL](https://planet-fact-site-vue-edition.vercel.app)
 
 
 ### Built with
